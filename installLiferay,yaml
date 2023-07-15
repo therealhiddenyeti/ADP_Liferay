@@ -1,0 +1,17 @@
+---
+- hosts: [dmgr]
+  gather_facts: no
+  become: yes
+  become_user: wasadmin
+
+  vars:
+    ansible_python_interpreter: /usr/bin/python3
+
+    
+  tasks:
+
+    - name: move war to dmgr
+      copy: 
+        src: installLiferay-ce.jy
+        dest: /tmp/
+        mode: '0755'

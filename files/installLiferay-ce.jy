@@ -1,0 +1,8 @@
+# install the app
+AdminApp.install('\tmp\liferay-ce-portal-7.4.3.80-ga80-20230605121335720.war', '[ -nopreCompileJSPs -distributeApp -nouseMetaDataFromBinary -nodeployejb -appname liferay-ce-yeti -createMBeansForResources -noreloadEnabled -nodeployws -validateinstall warn -noprocessEmbeddedConfig -filepermission .*\.dll=755#.*\.so=755#.*\.a=755#.*\.sl=755 -noallowDispatchRemoteInclude -noallowServiceRemoteInclude -asyncRequestDispatchType DISABLED -nouseAutoLink -noenableClientModule -clientMode isolated -novalidateSchema -contextroot /wps -MapModulesToServers [[ liferay-ce-portal-7.4.3.80-ga80-20230605121335720.war liferay-ce-portal-7.4.3.80-ga80-20230605121335720.war,WEB-INF/web.xml WebSphere:cell=ip-172-31-17-69Cell01,cluster=liferay-cluster1 ]] -MapWebModToVH [[ liferay-ce-portal-7.4.3.80-ga80-20230605121335720.war liferay-ce-portal-7.4.3.80-ga80-20230605121335720.war,WEB-INF/web.xml default_host ]] -CtxRootForWebMod [[ liferay-ce-portal-7.4.3.80-ga80-20230605121335720.war liferay-ce-portal-7.4.3.80-ga80-20230605121335720.war,WEB-INF/web.xml /wps ]]]' )
+
+# save the config
+AdminConfig.save()
+
+# syncronize
+AdminControl.invoke('WebSphere:name=DeploymentManager,process=dmgr,platform=common,node=ip-172-31-17-69CellManager01,diagnosticProvider=true,version=9.0.5.12,type=DeploymentManager,mbeanIdentifier=DeploymentManager,cell=ip-172-31-17-69Cell01,spec=1.0', 'multiSync', '[false]', '[java.lang.Boolean]')

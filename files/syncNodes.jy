@@ -1,0 +1,12 @@
+#save and syncronize the nodes: wait until complete
+AdminConfig.save()
+AdminNodeManagement.syncActiveNodes()
+ 
+ 
+nodeSync = AdminControl.completeObjectName(nodeSyncObjectString)
+syncStatus = AdminControl.invoke(nodeSync, 'isNodeSynchronized')
+print syncStatus
+while syncStatus != "true":
+   time.sleep(10)
+   syncStatus = AdminControl.invoke(nodeSync, 'isNodeSynchronized')
+   print syncStatus
