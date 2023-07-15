@@ -9,6 +9,7 @@
     ansible_python_interpreter: /usr/bin/python3
     liferay_dir: "/home/wasprofile/liferay01/liferay"
     osgi_jar: "liferay-ce-portal-osgi-7.4.3.80-ga80-20230605121335720.zip"
+    osgi_extracted_dir: "liferay-ce-portal-osgi-7.4.3.80-ga80"
 
   tasks:
   
@@ -35,6 +36,6 @@
       state: absent
 
   - name: rename the diectory to osgi
-    ansible.builtin.command: mv liferay-ce-portal-osgi* osgi
+    ansible.builtin.command: mv {{ osgi_extracted_dir }} osgi
     args:
       chdir: "{{ liferay_dir }}"
