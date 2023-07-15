@@ -10,7 +10,7 @@
 
   tasks:
   
-    - name: create liferay_dir directory
+  - name: create liferay_dir directory
     file:
       path: "{{liferay_dir}}"
       state: directory
