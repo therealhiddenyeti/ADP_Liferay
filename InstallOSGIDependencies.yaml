@@ -9,10 +9,16 @@
     osgi_jar: "liferay-ce-portal-osgi-7.4.3.80-ga80-20230605121335720.zip"
 
   tasks:
-  - name: create liferay directory
+  
+    - name: create liferay_dir directory
+    file:
+      path: "{{liferay_dir}}"
+      state: directory
+      mode: '0755'
+  
+  - name: move file to liferay_dir
     ansible.builtin.command: cp /tmp/{{ osgi_jar }} {{ liferay_dir }}
     become: yes
     become_user: wasadmin
     args:
       chdir: /home/wasprofile/liferay01/
-      creates: "{{ liferay_dir }}"
