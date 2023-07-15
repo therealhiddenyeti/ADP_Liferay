@@ -5,7 +5,7 @@
   vars:
 
     ansible_python_interpreter: /usr/bin/python3
-    liferay_dir: "/home/wasprofile/liferay01/liferay"
+    liferay_dir: "/home/wasprofile/liferay01/liferay/"
     osgi_jar: "liferay-ce-portal-osgi-7.4.3.80-ga80-20230605121335720.zip"
 
   tasks:
