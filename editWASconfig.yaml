@@ -13,7 +13,7 @@
   tasks:
   
     - name: copy file to liferay_dir
-      command: cp {{ config_ini_file }} {{ config_ini_file }}.{{ ansible_date_time }}
+      command: cp {{ config_ini_file }} {{ config_ini_file }}.{{ ansible_date_time.iso8601 }}
 
     - name: edit WAS config.ini
       command: sed -i '406s/.*/{{ config_ini_line }}' {{ config_ini_file }}
