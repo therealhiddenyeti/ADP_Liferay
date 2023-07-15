@@ -24,3 +24,14 @@
     become_user: wasadmin
     args:
       chdir: /home/wasprofile/liferay01/
+
+  - name: unzip osgi jar
+    ansible.builtin.unarchive:
+      src: "{{ liferay_dir }}/{{ osgi_jar }}"
+      dest: {{ liferay_dir }}
+      remote_src: yes
+
+  - name: Remove file (delete file)
+    ansible.builtin.file:
+      path: "{{ liferay_dir }}/{{ osgi_jar }}"
+      state: absent
