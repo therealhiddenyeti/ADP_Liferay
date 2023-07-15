@@ -2,7 +2,7 @@
 - hosts: [dmgr]
   gather_facts: no
   become: yes
-  become_user: wasadmin
+  #become_user: wasadmin
 
   vars:
     ansible_python_interpreter: /usr/bin/python3
