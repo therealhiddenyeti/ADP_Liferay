@@ -23,6 +23,6 @@
   - name: deploy portal-ext.properties
     template:
       src: ElasticsearchConfiguration.config.j2
-      dest: "{{ osgi_config_dir }}"
+      dest: "{{ osgi_config_dir }}/ElasticsearchConfiguration.config"
       mode: "0755"
       backup: yes
