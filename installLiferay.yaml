@@ -10,8 +10,11 @@
     
   tasks:
 
-    - name: move war to dmgr
+    - name: move install jython to dmgr
       copy: 
         src: installLiferay-ce.jy
         dest: /tmp/
         mode: '0755'
+
+    - name: execute wsadmin to install liferay
+      command: /opt/IBM/WebSphere/AppServer/bin/wsadmin.sh -lang jython -f  /tmp/installLiferay-ce.jy > /tmp/install.out
