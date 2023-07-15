@@ -30,7 +30,7 @@
   - name: unzip osgi jar
     ansible.builtin.unarchive:
       src: "{{ liferay_dir }}/{{ osgi_jar }}"
-      dest: "{{ liferay_dir }}"
+      dest: "{{ liferay_dir }}/osgi"
       remote_src: yes
 
   - name: Remove file (delete file)
