@@ -2,7 +2,7 @@
 - hosts: all
   gather_facts: yes
   become: yes
-  become_user: wasadmin
+  #become_user: wasadmin
 
   vars:
 
