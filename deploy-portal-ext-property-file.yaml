@@ -7,11 +7,14 @@
   vars:
 
     ansible_python_interpreter: /usr/bin/python3
-    liferay_dir: "/home/wasprofile/liferay01/liferay"    
+    liferay_dir: "/home/wasprofile/liferay01/liferay"
+    jdbc_default_url="http://yeti.com"
+    jdbc_default_username="yeti"
+    jdbc_default_password="yeti"    
 
   tasks:
 
-  - name: deploy rclone.conf
+  - name: deploy portal-ext.properties
     template:
       src: portal-ext.properties.j2
       dest: "{{ liferay_dir }}/portal-ext.properties"
