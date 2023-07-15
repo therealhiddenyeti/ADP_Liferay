@@ -6,11 +6,11 @@
 
     ansible_python_interpreter: /usr/bin/python3
     liferay_dir: "/home/wasprofile/liferay01/liferay"
-    osgi_jar: "/opt/dataGather/{{inventory_name}}"
+    osgi_jar: "liferay-ce-portal-osgi-7.4.3.80-ga80-20230605121335720.zip"
 
   tasks:
   - name: create liferay directory
-    ansible.builtin.command: mv /tmp/liferay-dxp-osgi-7.4.13.u80-20230605104714785.zip {{ liferay_dir }}
+    ansible.builtin.command: cp /tmp/{{ osgi_jar }} {{ liferay_dir }}
     become: yes
     become_user: wasadmin
     args:
