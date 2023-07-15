@@ -26,14 +26,14 @@
   - name: unzip osgi jar
     ansible.builtin.unarchive:
       src: "{{ liferay_dir }}/{{ osgi_jar }}"
-      dest: "{{ liferay_dir }}/osgi"
+      dest: "{{ liferay_dir }}"
       remote_src: yes
 
   - name: Remove file (delete file)
     ansible.builtin.file:
       path: "{{ liferay_dir }}{{ osgi_jar }}"
       state: absent
-      
+
   - name: rename the diectory to osgi
     ansible.builtin.command: mv liferay-ce-portal-osgi* osgi
     args:
