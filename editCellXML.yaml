@@ -1,0 +1,22 @@
+---
+- hosts: all
+  gather_facts: yes
+  become: yes
+  #become_user: wasadmin
+
+  vars:
+
+    ansible_python_interpreter: /usr/bin/python3
+    cell_config_file: "/home/wasprofile/dmgr01/config/cells/wsjass/cell.xml"
+    regexp: '/<secureSessionCookie xmi:id="SecureSessionCookie_1"/g'
+    
+  tasks:
+  
+    - name: "reomve line containing regexp with backup"
+      lineinfile:
+        path: "{{ cell_config_file }}"
+        # String to Search
+        regexp: "{{ regexp }}" 
+        # State is set to Absent to remove if the Searching Line is found
+        state: absent
+        backup: yes
