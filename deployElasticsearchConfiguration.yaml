@@ -1,0 +1,22 @@
+---
+- hosts: all
+  gather_facts: no
+  become: yes
+  become_user: wasadmin
+
+  vars:
+
+    ansible_python_interpreter: /usr/bin/python3
+    osgi_config_dir: "/home/wasprofile/liferay01/liferay/osgi/config"
+    index_Name_Prefix: "1"
+    elastic_password: "passw0rd"
+    host_addresses: '["http://11.16.115.253:9202","http://11.16.75.94:9202","http://11.17.7.124:9202"]'
+
+    tasks:
+
+  - name: deploy portal-ext.properties
+    template:
+      src: ElasticsearchConfiguration.config.j2
+      dest: "{{ osgi_config_dir }}"
+      mode: "0755"
+      backup: yes
