@@ -1,0 +1,19 @@
+---
+- hosts: all
+  gather_facts: yes
+  become: yes
+  become_user: wasadmin
+
+  vars:
+
+    ansible_python_interpreter: /usr/bin/python3
+    liferay_dir: "/home/wasprofile/liferay01/liferay"    
+
+  tasks:
+
+  - name: deploy rclone.conf
+    template:
+      src: portal-ext.properties.j2
+      dest: "{{ liferay_dir }}/portal-ext.properties"
+      mode: "0755"
+      backup: yes
