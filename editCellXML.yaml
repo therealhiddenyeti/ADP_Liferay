@@ -8,7 +8,7 @@
 
     ansible_python_interpreter: /usr/bin/python3
     cell_config_file: "/home/wasprofile/dmgr01/config/cells/wsjass/cell.xml"
-    line_to_remove: "       <secureSessionCookie xmi:id=\"SecureSessionCookie_1\" cookieDomain=\"*\" cookieName=\"JSESSIONID\" cookiePath=\"/\"*\"/>"
+    line_to_remove: '       <secureSessionCookie xmi:id="SecureSessionCookie_1" cookieDomain="*" cookieName="JSESSIONID" cookiePath="/"/>'
     
   tasks:
   
