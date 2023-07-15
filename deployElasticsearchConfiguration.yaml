@@ -12,7 +12,13 @@
     elastic_password: "passw0rd"
     host_addresses: '["http://11.16.115.253:9202","http://11.16.75.94:9202","http://11.17.7.124:9202"]'
 
-    tasks:
+  tasks:
+
+  - name: create osgi_config_dir directory
+    file:
+      path: "{{ osgi_config_dir }}"
+      state: directory
+      mode: '0755'
 
   - name: deploy portal-ext.properties
     template:

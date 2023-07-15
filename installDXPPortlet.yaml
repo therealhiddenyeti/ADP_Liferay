@@ -18,6 +18,6 @@
       mode: '0755'
 
   - name: copy file to liferay_dir
-    ansible.builtin.command: cp /tmp/portlet.jar {{ liferay_shared_lib_dir }}
+    command: cp /tmp/portlet.jar {{ liferay_shared_lib_dir }}
     args:
       chdir: "{{ liferay_shared_lib_dir }}"
