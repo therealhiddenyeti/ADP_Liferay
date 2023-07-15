@@ -32,7 +32,7 @@
 
   - name: Remove file (delete file)
     ansible.builtin.file:
-      path: "{{ liferay_dir }}{{ osgi_jar }}"
+      path: "{{ liferay_dir }}/{{ osgi_jar }}"
       state: absent
 
   - name: rename the diectory to osgi
