@@ -1,0 +1,18 @@
+---
+- hosts: all
+  gather_facts: no
+
+  vars:
+
+    ansible_python_interpreter: /usr/bin/python3
+    liferay_dir: "/home/wasprofile/liferay01/liferay"
+    osgi_jar: "/opt/dataGather/{{inventory_name}}"
+
+  tasks:
+  - name: create liferay directory
+    ansible.builtin.command: mv /tmp/liferay-dxp-osgi-7.4.13.u80-20230605104714785.zip {{ liferay_dir }}
+    become: yes
+    become_user: wasadmin
+    args:
+      chdir: /home/wasprofile/liferay01/
+      creates: "{{ liferay_dir }}"
