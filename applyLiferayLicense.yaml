@@ -1,0 +1,25 @@
+---
+- hosts: all
+  gather_facts: yes
+  become: yes
+  become_user: wasadmin
+
+  vars:
+
+    ansible_python_interpreter: /usr/bin/python3
+    liferay_deploy_dir: "/home/wasprofile/liferay01/liferay/deploy"
+    license_file: "activation-key-dxp-trial-7.4.xml"
+
+  tasks:
+    - name: create liferay_dir directory
+      file:
+        path: "{{ liferay_deploy_dir }}"
+        state: directory
+        mode: '0755'
+
+    - name: copy file to liferay_dir
+      copy: 
+        src: /tmp/{{ license_file }}
+        dest: "{{ liferay_deploy_dir }}"
+        mode: '0755'
+      remote_src: true
