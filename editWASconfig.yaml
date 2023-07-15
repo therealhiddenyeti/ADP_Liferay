@@ -1,0 +1,19 @@
+---
+- hosts: all
+  gather_facts: no
+  become: yes
+  become_user: wasadmin
+
+  vars:
+
+    ansible_python_interpreter: /usr/bin/python3
+    config_ini_file: "/opt/IBM/WebSphere/AppServer/configuration/config.ini"
+    config_ini_line: "com.ibm.CORBA,javax.portlet,javax.portlet.filter,javax.portlet.annotations,com.ibm"
+
+  tasks:
+  
+    - name: copy file to liferay_dir
+      command: cp {{ config_ini_file }} {{ config_ini_file }}.{{ ansible_date_time }}
+
+    - name: edit WAS config.ini
+      command: sed -i '406s/.*/{{ config_ini_line }}' {{ config_ini_file }}
