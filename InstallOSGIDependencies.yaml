@@ -15,7 +15,9 @@
       path: "{{liferay_dir}}"
       state: directory
       mode: '0755'
-  
+    become: yes
+    become_user: wasadmin
+
   - name: move file to liferay_dir
     ansible.builtin.command: cp /tmp/{{ osgi_jar }} {{ liferay_dir }}
     become: yes
