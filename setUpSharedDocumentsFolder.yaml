@@ -34,11 +34,11 @@
       paths: "{{ document_library_dir }}"
       use_regex: false
     register: output
-    failed_when: output.matched > 0
+    failed_when: output.matched == 0
 
   - name: print output  
     debug:
-      var: output
+      var: output.matched
 
 #  - name: Delete the source directory
 #    file:
