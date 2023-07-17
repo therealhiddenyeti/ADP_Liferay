@@ -47,4 +47,4 @@ line_to_add: '  <jsp-attribute name="jdkSourceLevel" value="18"/>'
 
 # document library
 document_library_dir: "/opt/liferay/document_library"
-document_library_src_dir: "/var/wasprofile90/liferay01/liferay/data/document_library"
+document_library_src_dir: "/home/wasprofile/liferay01/liferay/data/document_library"
