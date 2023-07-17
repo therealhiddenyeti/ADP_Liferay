@@ -41,3 +41,11 @@
     file:
       path: "{{ document_library_src_dir }}"
       state: absent
+  
+  - name: create symbolic link to shared directory
+    file:
+      src: "{{ document_library_dir }}"
+      dest: "{{ document_library_src_dir }}"
+      owner: wasadmin
+      group: wasadmin
+      state: link  
