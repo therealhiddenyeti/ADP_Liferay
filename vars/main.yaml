@@ -14,9 +14,7 @@ liferay_shared_lib_dir: "/home/wasprofile/liferay01/liferay_shared_lib"
 portlet_jar: "/tmp/portlet.jar"
 
 #deploy portal-ext-property-file
-jdbc_default_url: "http://yeti.com"
-jdbc_default_username: "yeti"
-jdbc_default_password: "yeti"   
+# no properties  
 
 # deploy Elasticsearch Configuration
 osgi_config_dir: "/home/wasprofile/liferay01/liferay/osgi/config"
@@ -24,7 +22,7 @@ index_name_prefix: "1"
 elastic_password: "passw0rd"
 host_addresses: '["http://11.16.115.253:9202","http://11.16.75.94:9202","http://11.17.7.124:9202"]'
 
-# edit cell.xml
+# removeSecureSessionCookieTag
 cell_config_file_path: "/home/wasprofile/dmgr01/config/cells/wsjass"
 cell_config_file: "cell.xml"
 line_to_remove: '       <secureSessionCookie xmi:id="SecureSessionCookie_1" cookieDomain="*" cookieName="JSESSIONID" cookiePath="/"/>'
