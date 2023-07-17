@@ -17,8 +17,8 @@
 
   - name: populate document_library from the document_library in the wasprofile    
     copy: 
-      src: "{{ document_library_src_dir }}"
-      dest: "{{ document_library_dir }}"
+      src: "{{ document_library_src_dir }}/"
+      dest: "{{ document_library_dir }}/"
       remote_src: true
     run_once: true
 
