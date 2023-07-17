@@ -12,5 +12,14 @@
       dest: /tmp/
       mode: '0755'
 
-    - name: execute wsadmin to install liferay
-      command: /opt/IBM/WebSphere/AppServer/bin/wsadmin.sh -lang jython -f  /tmp/installLiferay-ce.jy
+  - name: execute wsadmin to install liferay
+    command: /opt/IBM/WebSphere/AppServer/bin/wsadmin.sh -lang jython -f  /tmp/installLiferay-ce.jy
+
+  - name: move install jython to dmgr
+    copy: 
+      src: startLiferay.jy
+      dest: /tmp/
+      mode: '0755'
+
+  - name: execute wsadmin to install liferay
+    command: /opt/IBM/WebSphere/AppServer/bin/wsadmin.sh -lang jython -f  /tmp/startLiferay.jy    
