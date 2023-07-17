@@ -1,0 +1,7 @@
+---
+- name: File manipulation for Liferay
+  hosts: all
+  #become: yes
+
+  roles:
+  - adp 
