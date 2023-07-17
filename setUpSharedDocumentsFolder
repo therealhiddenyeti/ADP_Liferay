@@ -1,0 +1,43 @@
+---
+- name: Share the Document Folder across cluster
+  hosts: [node]
+  gather_facts: no
+  become: yes
+  become_user: wasadmin
+
+  vars_files:
+    - vars/main.yaml
+
+  tasks:
+  - name: create the document_library directory
+    file:
+      path: "{{ document_library_dir }}"
+      state: directory
+      mode: '0755'
+    run_once: true
+
+  - name: populate docuemnt_library from the docuemnt_library in the wasprofile    
+    command: cp -R {{ docuemnt_library_src_dir }}/* {{ document_library_dir }}
+    run_once: true
+
+  - name: set ownership of the shared directory
+    file:
+      path: "{{ document_library_dir }}"
+      owner: wasadmin
+      group: mqm
+      recurse: true  
+
+  - name: verify shared dir has content
+    ansible.builtin.find:
+      paths: "{{ document_library_dir }}"
+      use_regex: false
+    register: output
+
+  - name: print output  
+    debug:
+      var: output
+
+#  - name: Delete the source directory
+#    file:
+#      path: "{{ docuemnt_library_src_dir }}"
+#      state: absent
