@@ -49,3 +49,10 @@
       owner: wasadmin
       group: wasadmin
       state: link  
+
+  - name: set ownership of the symlink
+    file:
+      path: "{{ document_library_src_dir }}"
+      owner: wasadmin
+      group: wasadmin
+
