@@ -16,7 +16,10 @@
     run_once: true
 
   - name: populate docuemnt_library from the docuemnt_library in the wasprofile    
-    command: cp -R {{ document_library_src_dir }}/* {{ document_library_dir }}
+    copy: 
+      src: "{{ document_library_src_dir }}"
+      dest: "{{ document_library_dir }}"
+      remote_src: true
     run_once: true
 
   - name: set ownership of the shared directory
