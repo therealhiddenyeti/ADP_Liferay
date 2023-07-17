@@ -27,7 +27,8 @@
       path: "{{ document_library_dir }}"
       owner: wasadmin
       group: wasadmin
-      recurse: true  
+      recurse: true
+    run_once: true  
 
   - name: verify shared dir has content
     ansible.builtin.find:
@@ -36,11 +37,7 @@
     register: output
     failed_when: output.matched == 0
 
-  - name: print output  
-    debug:
-      var: output.matched
-
-#  - name: Delete the source directory
-#    file:
-#      path: "{{ document_library_src_dir }}"
-#      state: absent
+  - name: Delete the source directory
+    file:
+      path: "{{ document_library_src_dir }}"
+      state: absent
