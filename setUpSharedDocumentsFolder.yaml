@@ -34,7 +34,7 @@
       paths: "{{ document_library_dir }}"
       use_regex: false
     register: output
-    failed_when: output.files.matched < 20
+    failed_when: output.files.matched > 0
 
   - name: print output  
     debug:
