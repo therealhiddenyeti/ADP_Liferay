@@ -1,0 +1,7 @@
+# Liferay File manipulation vars
+
+# common
+liferay_deploy_dir: "/home/wasprofile/liferay01/liferay/deploy"
+
+#license
+license_file: "activation-key-dxp-trial-7.4.xml"
