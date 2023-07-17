@@ -8,7 +8,7 @@
     - vars/main.yaml
     
   tasks:
-    - name: "remove line containing regexp with backup"
+  - name: "remove line containing regexp with backup"
     lineinfile:
       path: "{{ ibm_web_ext_xml_dir }}/{{ ibm_web_ext_xml_file }}"
       insertafter: "{{ insertAfter }}"
