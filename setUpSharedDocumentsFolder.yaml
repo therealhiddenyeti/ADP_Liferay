@@ -15,7 +15,7 @@
       mode: '0755'
     run_once: true
 
-  - name: populate docuemnt_library from the docuemnt_library in the wasprofile    
+  - name: populate document_library from the document_library in the wasprofile    
     copy: 
       src: "{{ document_library_src_dir }}"
       dest: "{{ document_library_dir }}"
