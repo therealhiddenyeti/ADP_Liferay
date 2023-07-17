@@ -1,7 +1,46 @@
 # Liferay File manipulation vars
 
 # common
-liferay_deploy_dir: "/home/wasprofile/liferay01/liferay/deploy"
+ansible_python_interpreter: /usr/bin/python3
+liferay_dir: "/home/wasprofile/liferay01/liferay"
 
 #license
+path_to_license_file: "/tmp"
 license_file: "activation-key-dxp-trial-7.4.xml"
+liferay_deploy_dir: "/home/wasprofile/liferay01/liferay/deploy"
+
+#deploy portlet jar
+liferay_shared_lib_dir: "/home/wasprofile/liferay01/liferay_shared_lib"
+portlet_jar: "/tmp/portlet.jar"
+
+#deploy portal-ext-property-file
+jdbc_default_url: "http://yeti.com"
+jdbc_default_username: "yeti"
+jdbc_default_password: "yeti"   
+
+# deploy Elasticsearch Configuration
+osgi_config_dir: "/home/wasprofile/liferay01/liferay/osgi/config"
+index_name_prefix: "1"
+elastic_password: "passw0rd"
+host_addresses: '["http://11.16.115.253:9202","http://11.16.75.94:9202","http://11.17.7.124:9202"]'
+
+# edit cell.xml
+cell_config_file_path: "/home/wasprofile/dmgr01/config/cells/wsjass"
+cell_config_file: "cell.xml"
+line_to_remove: '       <secureSessionCookie xmi:id="SecureSessionCookie_1" cookieDomain="*" cookieName="JSESSIONID" cookiePath="/"/>'
+
+# edit WAS config.ini
+config_ini_file: "/opt/IBM/WebSphere/AppServer/configuration/config.ini"
+config_ini_line: "com.ibm.CORBA,javax.portlet,javax.portlet.filter,javax.portlet.annotations,com.ibm"
+
+# install OSGI Dependencies
+osgi_jar_path: "/tmp"
+osgi_jar: "liferay-ce-portal-osgi-7.4.3.80-ga80-20230605121335720.zip"
+osgi_extracted_dir: "liferay-ce-portal-osgi-7.4.3.80-ga80"
+was_profile_dir: "/home/wasprofile/liferay01/"
+
+# edit ibm-web-ext.xml
+ibm_web_ext_xml_dir: "/opt/IBM/WebSphere/AppServer/profiles/AppSrv01/installedApps/ip-172-31-17-69Cell01/liferay-ce-yeti.ear/liferay-ce-portal-7.4.3.80-ga80-20230605121335720.war/WEB-INF"
+ibm_web_ext_xml_file: "ibm-web-ext.xml"
+insertAfter: '  <jsp-attribute name="reloadInterval" value="10"/>'
+line_to_add: '  <jsp-attribute name="jdkSourceLevel" value="18"/>'

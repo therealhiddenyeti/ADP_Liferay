@@ -1,41 +1,37 @@
 ---
-- hosts: all
+- name: Install OSGI Dependancies
+  hosts: [node]
   gather_facts: no
   become: yes
   become_user: wasadmin
 
-  vars:
-
-    ansible_python_interpreter: /usr/bin/python3
-    liferay_dir: "/home/wasprofile/liferay01/liferay"
-    osgi_jar: "liferay-ce-portal-osgi-7.4.3.80-ga80-20230605121335720.zip"
-    osgi_extracted_dir: "liferay-ce-portal-osgi-7.4.3.80-ga80"
-
+  vars_files:
+    - vars/main.yaml
+    
   tasks:
-  
   - name: create liferay_dir directory
     file:
       path: "{{liferay_dir}}"
       state: directory
       mode: '0755'
 
-  - name: copy file to liferay_dir
-    ansible.builtin.command: cp /tmp/{{ osgi_jar }} {{ liferay_dir }}
+  - name: copy osgi jar file to liferay_dir
+    command: cp {{ osgi_jar_path }}/{{ osgi_jar }} {{ liferay_dir }}
     args:
-      chdir: /home/wasprofile/liferay01/
+      chdir: "{{ was_profile_dir }}"
 
-  - name: unzip osgi jar
-    ansible.builtin.unarchive:
+  - name: extract osgi jar
+    unarchive:
       src: "{{ liferay_dir }}/{{ osgi_jar }}"
       dest: "{{ liferay_dir }}"
       remote_src: yes
 
-  - name: Remove file (delete file)
-    ansible.builtin.file:
+  - name: Delete the osgi jar
+    file:
       path: "{{ liferay_dir }}/{{ osgi_jar }}"
       state: absent
 
-  - name: rename the diectory to osgi
-    ansible.builtin.command: mv {{ osgi_extracted_dir }} osgi
+  - name: rename the dirctory to friendly name
+    command: mv {{ osgi_extracted_dir }} osgi
     args:
       chdir: "{{ liferay_dir }}"

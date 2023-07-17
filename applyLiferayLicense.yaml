@@ -1,6 +1,7 @@
 ---
-- hosts: all
-  gather_facts: yes
+- name: Apply Liferay License
+  hosts: [node]
+  gather_facts: no
   become: yes
   become_user: wasadmin
 
@@ -8,15 +9,15 @@
     - vars/main.yaml
 
   tasks:
-    - name: create liferay_dir directory
-      file:
-        path: "{{ liferay_deploy_dir }}"
-        state: directory
-        mode: '0755'
+  - name: create liferay_dir directory
+    file:
+      path: "{{ liferay_deploy_dir }}"
+      state: directory
+      mode: '0755'
 
-    - name: copy file to liferay_dir
-      copy: 
-        src: /tmp/{{ license_file }}
-        dest: "{{ liferay_deploy_dir }}"
-        mode: '0755'
-        remote_src: true
+  - name: copy license file to liferay_dir
+    copy: 
+      src: "{{ path_to_license_file }}/{{ license_file }}"
+      dest: "{{ liferay_deploy_dir }}"
+      mode: '0755'
+      remote_src: true

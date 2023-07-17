@@ -1,16 +1,14 @@
 ---
-- hosts: all
+- name: Install DXP portlet.jar
+  hosts: [node]
   gather_facts: no
   become: yes
   become_user: wasadmin
 
-  vars:
-
-    ansible_python_interpreter: /usr/bin/python3
-    liferay_shared_lib_dir: "/home/wasprofile/liferay01/liferay_shared_lib"
+  vars_files:
+    - vars/main.yaml
 
   tasks:
-  
   - name: create liferay_shared_lib_dir directory
     file:
       path: "{{ liferay_shared_lib_dir }}"
@@ -18,6 +16,6 @@
       mode: '0755'
 
   - name: copy file to liferay_dir
-    command: cp /tmp/portlet.jar {{ liferay_shared_lib_dir }}
+    command: cp {{ portlet_jar }} {{ liferay_shared_lib_dir }}
     args:
       chdir: "{{ liferay_shared_lib_dir }}"

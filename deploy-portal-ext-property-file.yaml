@@ -1,16 +1,12 @@
 ---
-- hosts: all
-  gather_facts: yes
+- name: Connect Liferay  to Database
+  hosts: [node]
+  gather_facts: no
   become: yes
   become_user: wasadmin
 
-  vars:
-
-    ansible_python_interpreter: /usr/bin/python3
-    liferay_dir: "/home/wasprofile/liferay01/liferay"
-    jdbc_default_url: "http://yeti.com"
-    jdbc_default_username: "yeti"
-    jdbc_default_password: "yeti"    
+  vars_files:
+    - vars/main.yaml
 
   tasks:
 

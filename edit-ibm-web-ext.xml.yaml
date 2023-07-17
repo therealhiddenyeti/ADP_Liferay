@@ -1,30 +1,25 @@
 ---
-- hosts: all
-  gather_facts: yes
+- name: Setup JDK Version for Compiling JSPs 
+  hosts: [node]
+  gather_facts: no
   become: yes
-  #become_user: wasadmin
 
-  vars:
-
-    ansible_python_interpreter: /usr/bin/python3
-    ibm_web_ext_xml_file: "/opt/IBM/WebSphere/AppServer/profiles/AppSrv01/installedApps/ip-172-31-17-69Cell01/liferay-ce-yeti.ear/liferay-ce-portal-7.4.3.80-ga80-20230605121335720.war/WEB-INF/ibm-web-ext.xml"
-    insertAfter: '  <jsp-attribute name="reloadInterval" value="10"/>'
-    line_to_add: '  <jsp-attribute name="jdkSourceLevel" value="18"/>'
+  vars_files:
+    - vars/main.yaml
     
   tasks:
-  
-    - name: "reomve line containing regexp with backup"
-      lineinfile:
-        path: "{{ ibm_web_ext_xml_file }}"
-        insertafter: "{{ insertAfter }}"
-        line: "{{ line_to_add }}"
-        backup: yes
+    - name: "remove line containing regexp with backup"
+    lineinfile:
+      path: "{{ ibm_web_ext_xml_dir }}/{{ ibm_web_ext_xml_file }}"
+      insertafter: "{{ insertAfter }}"
+      line: "{{ line_to_add }}"
+      backup: yes
 
-    - name: move install jython to dmgr
-      copy: 
-        src: startLiferay.jy
-        dest: /tmp/
-        mode: '0755'
+#  - name: move install jython to dmgr
+#    copy: 
+#      src: startLiferay.jy
+#      dest: /tmp/
+#      mode: '0755'
 
-    - name: execute wsadmin to install liferay
-      command: /opt/IBM/WebSphere/AppServer/bin/wsadmin.sh -lang jython -f  /tmp/startLiferay.jy
+#  - name: execute wsadmin to install liferay
+#    command: /opt/IBM/WebSphere/AppServer/bin/wsadmin.sh -lang jython -f  /tmp/startLiferay.jy

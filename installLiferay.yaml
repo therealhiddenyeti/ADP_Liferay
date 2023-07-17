@@ -1,20 +1,16 @@
 ---
-- hosts: [dmgr]
+- name: Deploy Liferay WAR file
+  hosts: [dmgr]
   gather_facts: no
   become: yes
-  #become_user: wasadmin
 
-  vars:
-    ansible_python_interpreter: /usr/bin/python3
-
-    
   tasks:
 
-    - name: move install jython to dmgr
-      copy: 
-        src: installLiferay-ce.jy
-        dest: /tmp/
-        mode: '0755'
+  - name: move install jython script to dmgr
+    copy: 
+      src: installLiferay-ce.jy
+      dest: /tmp/
+      mode: '0755'
 
     - name: execute wsadmin to install liferay
-      command: /opt/IBM/WebSphere/AppServer/bin/wsadmin.sh -lang jython -f  /tmp/installLiferay-ce.jy > /tmp/install.out
+      command: /opt/IBM/WebSphere/AppServer/bin/wsadmin.sh -lang jython -f  /tmp/installLiferay-ce.jy
