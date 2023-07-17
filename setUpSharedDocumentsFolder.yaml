@@ -8,6 +8,8 @@
     - vars/main.yaml
 
   tasks:
+
+# the first three tasks execute on only one node  
   - name: create the document_library directory
     file:
       path: "{{ document_library_dir }}"
@@ -30,6 +32,7 @@
       recurse: true
     run_once: true  
 
+# the remaining tasks execute on all nodes
   - name: verify shared dir has content
     ansible.builtin.find:
       paths: "{{ document_library_dir }}"
