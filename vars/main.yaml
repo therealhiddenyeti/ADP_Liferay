@@ -44,3 +44,7 @@ ibm_web_ext_xml_dir: "/opt/IBM/WebSphere/AppServer/profiles/AppSrv01/installedAp
 ibm_web_ext_xml_file: "ibm-web-ext.xml"
 insertAfter: '  <jsp-attribute name="reloadInterval" value="10"/>'
 line_to_add: '  <jsp-attribute name="jdkSourceLevel" value="18"/>'
+
+# document library
+document_library_dir: "/opt/liferay/document_library"
+document_library_src_dir: "/var/wasprofile90/liferay01/liferay/data/document_library"

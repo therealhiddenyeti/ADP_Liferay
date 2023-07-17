@@ -17,7 +17,7 @@
     run_once: true
 
   - name: populate docuemnt_library from the docuemnt_library in the wasprofile    
-    command: cp -R {{ docuemnt_library_src_dir }}/* {{ document_library_dir }}
+    command: cp -R {{ document_library_src_dir }}/* {{ document_library_dir }}
     run_once: true
 
   - name: set ownership of the shared directory
@@ -39,5 +39,5 @@
 
 #  - name: Delete the source directory
 #    file:
-#      path: "{{ docuemnt_library_src_dir }}"
+#      path: "{{ document_library_src_dir }}"
 #      state: absent
