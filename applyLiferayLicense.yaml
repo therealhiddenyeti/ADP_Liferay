@@ -5,7 +5,7 @@
   become_user: wasadmin
 
   vars_files:
-    - vars/main.yml
+    - vars/main.yaml
 
   tasks:
     - name: create liferay_dir directory
