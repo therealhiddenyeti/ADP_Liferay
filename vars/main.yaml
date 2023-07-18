@@ -31,14 +31,14 @@ line_to_remove: '       <secureSessionCookie xmi:id="SecureSessionCookie_1" cook
 config_ini_file: "/opt/IBM/WebSphere/AppServer/configuration/config.ini"
 config_ini_line: "com.ibm.CORBA,javax.portlet,javax.portlet.filter,javax.portlet.annotations,com.ibm"
 
-# install OSGI Dependencies
+# installOSGI Dependencies
 osgi_jar_path: "/tmp"
 osgi_jar: "liferay-ce-portal-osgi-7.4.3.80-ga80-20230605121335720.zip"
 osgi_extracted_dir: "liferay-ce-portal-osgi-7.4.3.80-ga80"
 was_profile_dir: "/home/wasprofile/liferay01/"
 
 # setupJDKVersionforCompilingJSPs
-ibm_web_ext_xml_dir: "/opt/IBM/WebSphere/AppServer/profiles/AppSrv01/installedApps/ip-172-31-17-69Cell01/liferay-ce-yeti.ear/liferay-ce-portal-7.4.3.80-ga80-20230605121335720.war/WEB-INF"
+ibm_web_ext_xml_dir: "/opt/IBM/WebSphere/AppServer/profiles/AppSrv01/installedApps/ip-172-31-17-69Cell01/liferay-dxp.ear/liferay-ce-portal-7.4.3.80-ga80-20230605121335720.war/WEB-INF"
 ibm_web_ext_xml_file: "ibm-web-ext.xml"
 insertAfter: '  <jsp-attribute name="reloadInterval" value="10"/>'
 line_to_add: '  <jsp-attribute name="jdkSourceLevel" value="18"/>'
