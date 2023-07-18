@@ -34,7 +34,7 @@
 
 # the remaining tasks execute on all nodes
   - name: verify shared dir has content
-    ansible.builtin.find:
+    find:
       paths: "{{ document_library_dir }}"
       use_regex: false
     register: output

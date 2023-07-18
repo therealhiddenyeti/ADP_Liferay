@@ -1,5 +1,5 @@
 ---
-- name: Connect Liferay  to Database
+- name: Connect Liferay to Database
   hosts: [node]
   gather_facts: no
   become: yes
